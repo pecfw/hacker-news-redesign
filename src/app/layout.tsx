@@ -22,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={openSans.className}>
+        <hr className={styles.header__hr}/>
         <main className={`${styles.main} ${typography.typography}`}>
           <Header />
           {children}
