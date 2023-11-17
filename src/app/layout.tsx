@@ -7,7 +7,7 @@ import typography from './styles/typography.module.scss';
 import Header from './components/header';
 import Footer from './components/footer';
 
-const ubuntuMono = Open_Sans({ weight: '400', subsets: ['latin'] });
+const openSans = Open_Sans({ weight: '400', subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Hacker News Redesign',
@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={ubuntuMono.className}>
+      <body className={openSans.className}>
         <main className={`${styles.main} ${typography.typography}`}>
           <Header />
           {children}

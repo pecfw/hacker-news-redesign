@@ -14,7 +14,7 @@ const ArticleList: React.FC<{
   starredArticles: ArticleType[];
 }> = ({ articles, onStarClick, starredArticles }) => {
   const formattedUrl = (url: string) =>
-    url && new URL(url).hostname.replace('www.', '');
+    url && `(${new URL(url).hostname.replace('www.', '')})`;
 
   const formattedTime = (time: number) => {
     const numberOfHours = Math.floor(
@@ -28,8 +28,17 @@ const ArticleList: React.FC<{
     article: ArticleType,
     imageSrc: string
   ) => (
-    <a onClick={() => onStarClick(isFilled, article)}>
-      <Image src={imageSrc} alt="star filled" priority />
+    <a
+      className={styles.article_list__paragraph__star}
+      onClick={() => onStarClick(isFilled, article)}
+    >
+      <Image
+        className={styles.article_list__paragraph__star__image}
+        src={imageSrc}
+        alt="star filled"
+        priority
+      />
+      <span>{isFilled ? 'saved' : 'save'}</span>
     </a>
   );
 

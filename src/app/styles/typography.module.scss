@@ -1,7 +1,6 @@
 @import '_variables.scss';
 
 .typography {
-
   p {
     color: $color-black-1;
     font-size: $font-size-1;
@@ -12,18 +11,23 @@
     font-weight: 400;
   }
 
-  h2{
+  h2 {
     font-size: $font-size-3;
     font-weight: 700;
   }
 
-  li::marker{
-      color: $color-black-1;
-      font-size: $font-size-3;
+  li::marker {
+    color: $color-black-1;
+    font-size: $font-size-3;
   }
 
-  li::marker, h2{
+  li::marker,
+  h2 {
     font-family: $font-family-1;
   }
 
+  span {
+    font-family: $font-family-1;
+    font-size: $font-size-1;
+  }
 }
