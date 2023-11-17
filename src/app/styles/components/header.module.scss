@@ -1,0 +1,30 @@
+@import '../_variables.scss';
+
+.header {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: $size-9;
+
+  .tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-left: $size-7;
+    align-items: center;
+    gap: $size-1;
+
+    a{
+      font-weight: 400;
+    }
+
+    .tab_link{
+      color: $color-orange;
+      font-weight: 800; 
+    }
+
+    @media screen and (max-width: 768px) {
+      margin-left: $size-8; 
+      
+    }
+  }
+}

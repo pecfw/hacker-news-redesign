@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import styles from '../page.module.css';
+import styles from '../styles/components/header.module.scss';
 import hackerNewsLogo from '../images/hacker-news-logo.svg';
 
 const TabLink: React.FC<{ href: string; label: string }> = ({
@@ -7,7 +7,7 @@ const TabLink: React.FC<{ href: string; label: string }> = ({
   label
 }) => {
   return (
-    <a href={href} className={styles.tabLink}>
+    <a href={href} className={styles.tab_link}>
       {label}
     </a>
   );

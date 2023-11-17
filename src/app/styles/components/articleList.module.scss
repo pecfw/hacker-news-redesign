@@ -1,0 +1,22 @@
+@import '../_variables.scss';
+
+.article_list{
+ margin: 0 $size-5;
+
+ li {
+  padding-left: $size-2;
+  margin-bottom: $size-5;
+
+  .article_list__card {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   flex-wrap: wrap;
+   gap: $size-3;
+  }
+  
+  .article_list__paragraph {
+   margin-top: $size-2;
+  }
+ }
+}

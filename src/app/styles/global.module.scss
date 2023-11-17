@@ -1,0 +1,19 @@
+@import '_variables.scss';
+
+.main {
+  padding: $size-8 $size-10;
+
+  hr {
+    color: $color-orange-2;
+    margin-top: $size-9;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 1.813rem;
+  }
+}

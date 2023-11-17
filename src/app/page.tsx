@@ -1,10 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
-import styles from './page.module.css';
 import ArticleList from './components/articleList';
 import { ArticleType } from './types';
 import { fetchArticleData } from './helpers/fetchData';
-import Header from './components/header';
 
 export default function Home() {
   const [latestArticles, setLatestArticles] = useState<ArticleType[]>([]);
@@ -51,13 +49,10 @@ export default function Home() {
   }, []);
 
   return (
-    <main className={styles.main}>
-      <Header />
-      <ArticleList
-        articles={latestArticles}
-        onStarClick={onStarClick}
-        starredArticles={starredArticles}
-      />
-    </main>
+    <ArticleList
+      articles={latestArticles}
+      onStarClick={onStarClick}
+      starredArticles={starredArticles}
+    />
   );
 }

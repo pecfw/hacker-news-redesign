@@ -1,4 +1,4 @@
-import styles from '../page.module.css';
+import styles from '../styles/components/footer.module.scss';
 
 const renderLink = (href: string, label: string) => (
   <a
@@ -14,8 +14,8 @@ const renderLink = (href: string, label: string) => (
 const Footer = () => {
   return (
     <div className={styles.footer}>
-      Hacker News
-      <div className={styles.links}>
+      <div className={styles.footer_header}>Hacker News</div>
+      <div className={styles.footer_links}>
         {renderLink('/', 'latest')} | {renderLink('/starred', 'starred')}
       </div>
     </div>
