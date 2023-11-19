@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from 'react';
-import styles from '../page.module.css';
 import ArticleList from '../components/articleList';
 import { ArticleType } from '../types';
 
@@ -29,12 +28,10 @@ export default function StarredPage() {
     setStarredArticles(favList);
   }, []);
   return (
-    <main className={styles.main}>
       <ArticleList
         articles={starredArticles}
         onStarClick={onStarClick}
         starredArticles={starredArticles}
       />
-    </main>
   );
 }

@@ -59,7 +59,7 @@ const ArticleList: React.FC<{
             <p className={styles.article_list__paragraph}>
               {article.score} points by {article.by}{' '}
               {formattedTime(article.time)} | {article.descendants} comments |{' '}
-              {starredArticles.some((item) => item.id === article.id)
+              {starredArticles && starredArticles.some((item) => item.id === article.id)
                 ? starImage(true, article, starFilled)
                 : starImage(false, article, starUnfilled)}
             </p>
