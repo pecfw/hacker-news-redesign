@@ -1,0 +1,19 @@
+@import '_variables';
+
+.light_toggle, .dark_toggle {
+    margin-left: auto;
+}
+
+// White theme
+
+
+
+// Dark theme
+.dark_theme {
+    background-color: $color-black-1;
+
+    li, a, p{
+        
+    }
+
+}
