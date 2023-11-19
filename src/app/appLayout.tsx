@@ -19,7 +19,7 @@ export default function AppLayouts({
   return (
     <main
       className={`${styles.main} ${typography.typography} ${
-        isDarkmode ? "dark_theme" : "light_theme"
+        isDarkmode ? state_theme.dark_theme : state_theme.light_theme
       }`}
     >
       <Header />

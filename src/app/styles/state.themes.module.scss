@@ -10,10 +10,14 @@
 
 // Dark theme
 .dark_theme {
-    background-color: $color-black-1;
+    background-color: $color-black-2;
 
-    li, a, p{
-        
+    h2, a, p, li::marker, h3{
+        color: $color-white;
     }
+
+        // .logoDarkPath{
+        //     fill: white;
+        // }
 
 }

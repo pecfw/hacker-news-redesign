@@ -14,7 +14,7 @@ const renderLink = (href: string, label: string) => (
 const Footer = () => {
   return (
     <div className={styles.footer}>
-      <div className={styles.footer_header}>Hacker News</div>
+      <div><h3>Hacker News</h3></div>
       <div className={styles.footer_links}>
         {renderLink('/', 'latest')} | {renderLink('/starred', 'starred')}
       </div>
