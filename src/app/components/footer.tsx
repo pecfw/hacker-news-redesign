@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import styles from '../styles/components/footer.module.scss';
 
-const renderLink = (href: string, label: string) => (
+const RenderLink: FC<{ href: string; label: string }> = ({ href, label }) => (
   <a
     href={href}
     className={styles.link}
@@ -16,7 +17,8 @@ const Footer = () => {
     <div className={styles.footer}>
       <div><h3>Hacker News</h3></div>
       <div className={styles.footer_links}>
-        {renderLink('/', 'latest')} | {renderLink('/starred', 'starred')}
+        <RenderLink href="/" label="latest" /> |{' '}
+        <RenderLink href="/starred" label="starred" />
       </div>
     </div>
   );

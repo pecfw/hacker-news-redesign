@@ -7,9 +7,7 @@ const fetchData = async (url: string) => {
 
 export const fetchArticleData = async (
   articleId: number
-): Promise<ArticleType> => {
-  const articleData = await fetchData(
+): Promise<ArticleType> =>
+  await fetchData(
     `https://hacker-news.firebaseio.com/v0/item/${articleId}.json`
   );
-  return articleData;
-};
