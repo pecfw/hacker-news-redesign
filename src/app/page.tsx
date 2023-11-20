@@ -1,10 +1,12 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import ArticleList from './components/articleList';
-import { fetchArticleData } from './helpers/fetchData';
-import { ArticleType } from './types';
+import { fetchArticleData } from './api/api';
+import { ArticleType } from './types/articleType';
+import { StarredContext } from './context/starredProvider';
 
 const Home = () => {
+  const { updateArray } = useContext(StarredContext);
   const [latestArticles, setLatestArticles] = useState<ArticleType[]>([]);
 
   useEffect(() => {
@@ -22,6 +24,15 @@ const Home = () => {
       setLatestArticles(articlesData);
     };
     fetchLatestArticles();
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const localStarredArticles = localStorage.getItem('starredArticles');
+      const localStarredArticlesList: ArticleType[] =
+        localStarredArticles && JSON.parse(localStarredArticles);
+      updateArray(localStarredArticlesList);
+    }
   }, []);
 
   return <ArticleList articles={latestArticles} />;

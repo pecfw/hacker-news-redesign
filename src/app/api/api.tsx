@@ -1,4 +1,4 @@
-import { ArticleType } from '../types';
+import { ArticleType } from '../types/articleType';
 
 const fetchData = async (url: string) => {
   const response = await fetch(url);

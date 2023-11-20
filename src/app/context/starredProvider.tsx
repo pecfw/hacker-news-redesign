@@ -1,5 +1,5 @@
 import { createContext, useState, ReactNode } from 'react';
-import { ArticleType } from '../types';
+import { ArticleType } from '../types/articleType';
 
 interface StarredContextType {
   starredArticles: ArticleType[];

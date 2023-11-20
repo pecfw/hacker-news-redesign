@@ -1,11 +1,13 @@
-@import "_variables.scss";
+@import '_variables.scss';
 
 .main {
   padding: $size-8 $size-10;
 
   hr {
-    color: $color-orange-2;
+    background-color: $color-orange-2;
     margin-top: $size-9;
+    border: none;
+    height: 2px;
   }
 
   a {
@@ -19,6 +21,7 @@
 }
 
 .header__hr {
-  color: $color-orange-2;
-  height: 1px;
+  background-color: $color-orange-2;
+  height: 4px;
+  border: none;
 }

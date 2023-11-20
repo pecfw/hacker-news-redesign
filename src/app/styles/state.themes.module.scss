@@ -1,4 +1,4 @@
-@import "_variables";
+@import '_variables';
 
 .light_toggle,
 .dark_toggle {
@@ -14,7 +14,7 @@
   p,
   li::marker,
   h3,
-  hr {
+  * {
     color: $color-white;
   }
 }
