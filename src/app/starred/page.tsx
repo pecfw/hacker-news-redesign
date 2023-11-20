@@ -1,37 +1,16 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useContext } from 'react';
 import ArticleList from '../components/articleList';
 import { ArticleType } from '../types';
+import { StarredContext } from '../providers/starredProvider';
 
 export default function StarredPage() {
-  const [starredArticles, setStarredArticles] = useState<ArticleType[]>([]);
-  const onStarClick = (isStarred: boolean, article: ArticleType) => {
-    const favourites = localStorage.getItem('starredArticles');
-    const favList: ArticleType[] = favourites && JSON.parse(favourites);
+  const { starredArticles, updateArray } = useContext(StarredContext);
 
-    if (isStarred) {
-      const newList = favList.filter(
-        ({ id: favArticleId }) => favArticleId !== article.id
-      );
-      localStorage.setItem('starredArticles', JSON.stringify(newList));
-      setStarredArticles(newList);
-    } else {
-      const newList = favList !== null ? [...favList, article] : [article];
-
-      localStorage.setItem('starredArticles', JSON.stringify(newList));
-      setStarredArticles(newList);
-    }
-  };
   useEffect(() => {
     const favourites = localStorage.getItem('starredArticles');
     const favList: ArticleType[] = favourites && JSON.parse(favourites);
-    setStarredArticles(favList);
+    updateArray(favList);
   }, []);
-  return (
-      <ArticleList
-        articles={starredArticles}
-        onStarClick={onStarClick}
-        starredArticles={starredArticles}
-      />
-  );
+  return <ArticleList articles={starredArticles} />;
 }

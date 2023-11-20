@@ -1,18 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, FC } from 'react';
 import Image from 'next/image';
 import { Ubuntu_Mono } from 'next/font/google';
 import { ArticleType } from '../types';
 import starUnfilled from '../images/star-unfilled.svg';
 import starFilled from '../images/star-filled.svg';
 import styles from '../styles/components/articleList.module.scss';
+import { StarredContext } from '../providers/starredProvider';
 
 const ubuntuMono = Ubuntu_Mono({ weight: '400', subsets: ['latin'] });
 
-const ArticleList: React.FC<{
-  articles: ArticleType[];
-  onStarClick: (isStarred: boolean, article: ArticleType) => void;
-  starredArticles: ArticleType[];
-}> = ({ articles, onStarClick, starredArticles }) => {
+const ArticleList: FC<{ articles: ArticleType[] }> = ({ articles }) => {
   const formattedUrl = (url: string) =>
     url && `(${new URL(url).hostname.replace('www.', '')})`;
 
@@ -23,24 +20,41 @@ const ArticleList: React.FC<{
     return `${numberOfHours} ${numberOfHours > 1 ? 'hours' : 'hour'} ago`;
   };
 
-  const starImage = (
-    isFilled: boolean,
-    article: ArticleType,
-    imageSrc: string
-  ) => (
+  const StarImage: FC<{
+    isFilled: boolean;
+    article: ArticleType;
+  }> = ({ isFilled, article }) => (
     <a
       className={styles.article_list__paragraph__star}
       onClick={() => onStarClick(isFilled, article)}
     >
       <Image
         className={styles.article_list__paragraph__star__image}
-        src={imageSrc}
+        src={isFilled ? starFilled : starUnfilled}
         alt="star filled"
         priority
       />
       <span>{isFilled ? 'saved' : 'save'}</span>
     </a>
   );
+  const favourites = localStorage.getItem('starredArticles');
+  const favList: ArticleType[] = favourites && JSON.parse(favourites);
+  const { starredArticles, updateArray } = useContext(StarredContext);
+
+  const onStarClick = (isStarred: boolean, article: ArticleType) => {
+    if (isStarred) {
+      const newList = favList.filter(
+        ({ id: favArticleId }) => favArticleId !== article.id
+      );
+      localStorage.setItem('starredArticles', JSON.stringify(newList));
+      updateArray(newList);
+    } else {
+      const newList = favList !== null ? [...favList, article] : [article];
+
+      localStorage.setItem('starredArticles', JSON.stringify(newList));
+      updateArray(newList);
+    }
+  };
 
   return (
     <div className={styles.article_list}>
@@ -59,9 +73,12 @@ const ArticleList: React.FC<{
             <p className={styles.article_list__paragraph}>
               {article.score} points by {article.by}{' '}
               {formattedTime(article.time)} | {article.descendants} comments |{' '}
-              {starredArticles && starredArticles.some((item) => item.id === article.id)
-                ? starImage(true, article, starFilled)
-                : starImage(false, article, starUnfilled)}
+              {starredArticles &&
+              starredArticles.some((item) => item.id === article.id) ? (
+                <StarImage isFilled={true} article={article} />
+              ) : (
+                <StarImage isFilled={false} article={article} />
+              )}
             </p>
           </li>
         ))}
