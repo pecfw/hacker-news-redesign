@@ -15,7 +15,7 @@ const RenderLink: FC<{ href: string; label: string }> = ({ href, label }) => (
 const Footer = () => {
   return (
     <div className={styles.footer}>
-      <div className={styles.footer_header}>Hacker News</div>
+      <div><h3>Hacker News</h3></div>
       <div className={styles.footer_links}>
         <RenderLink href="/" label="latest" /> |{' '}
         <RenderLink href="/starred" label="starred" />
