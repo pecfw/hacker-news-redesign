@@ -1,23 +1,20 @@
-@import '_variables';
+@import "_variables";
 
-.light_toggle, .dark_toggle {
-    margin-left: auto;
+.light_toggle,
+.dark_toggle {
+  margin-left: auto;
 }
-
-// White theme
-
-
 
 // Dark theme
 .dark_theme {
-    background-color: $color-black-2;
+  background-color: $color-black-2;
 
-    h2, a, p, li::marker, h3{
-        color: $color-white;
-    }
-
-        // .logoDarkPath{
-        //     fill: white;
-        // }
-
+  h2,
+  a,
+  p,
+  li::marker,
+  h3,
+  hr {
+    color: $color-white;
+  }
 }
